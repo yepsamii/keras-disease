@@ -1,4 +1,4 @@
 flask
 keras
 numpy
-cv2
+opencv-python-headless
