@@ -2,20 +2,46 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI Skin Disease Classifier</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Skin Disease Classifier</title>
+    <link
+      rel="icon"
+      href="skin.png"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
   </head>
   <body>
     <div class="container">
       <h1>🔬 AI Dermatology</h1>
-      <p class="subtitle">Advanced skin lesion classification using deep learning</p>
-      
-      <form method="POST" enctype="multipart/form-data" class="upload-form">
+      <p class="subtitle">
+        Advanced skin lesion classification using deep learning
+      </p>
+
+      <form
+        method="POST"
+        enctype="multipart/form-data"
+        class="upload-form"
+      >
         <div class="upload-section">
           <div class="file-input-wrapper">
-            <input type="file" name="file" accept="image/*" class="file-input" id="fileInput" required />
-            <label for="fileInput" class="file-input-button">
+            <input
+              type="file"
+              name="file"
+              accept="image/*"
+              class="file-input"
+              id="fileInput"
+              required
+            />
+            <label
+              for="fileInput"
+              class="file-input-button"
+            >
               <div class="upload-content">
                 <span class="upload-icon">📸</span>
                 <span class="upload-text">Choose skin image to analyze</span>
@@ -23,8 +49,11 @@
               </div>
             </label>
           </div>
-          
-          <button type="submit" class="submit-button">
+
+          <button
+            type="submit"
+            class="submit-button"
+          >
             <span class="button-text">Analyze Image</span>
             <span class="button-icon">🔍</span>
           </button>
@@ -37,21 +66,30 @@
           <span class="result-icon">✅</span>
           <h3 class="result-title">Analysis Complete</h3>
         </div>
-        
+
         <div class="disease-info">
           <div class="disease-name">{{ predicted_full_name }}</div>
           <div class="confidence-container">
             <div class="confidence-text">
-              Confidence: <span class="confidence-value">{{ "%.1f" | format(confidence * 100) }}%</span>
+              Confidence:
+              <span class="confidence-value"
+                >{{ "%.1f" | format(confidence * 100) }}%</span
+              >
             </div>
             <div class="confidence-bar">
-              <div class="confidence-fill" style="width: {{ confidence * 100 }}%;"></div>
+              <div
+                class="confidence-fill"
+                style="width: {{ confidence * 100 }}%;"
+              ></div>
             </div>
           </div>
         </div>
-        
+
         <div class="result-actions">
-          <button onclick="window.location.reload()" class="secondary-button">
+          <button
+            onclick="window.location.reload()"
+            class="secondary-button"
+          >
             Analyze Another Image
           </button>
         </div>
@@ -59,30 +97,37 @@
       {% else %}
       <div class="message-section">
         <div class="message-icon">💡</div>
-        <p class="message">Select a high-quality image of the skin lesion for accurate analysis</p>
+        <p class="message">
+          Select a high-quality image of the skin lesion for accurate analysis
+        </p>
       </div>
       {% endif %}
 
       <div class="disclaimer">
         <div class="disclaimer-icon">⚠️</div>
         <div class="disclaimer-content">
-          <strong>Medical Disclaimer:</strong> This tool is for educational purposes only and should not replace professional medical advice. Always consult with a qualified dermatologist for proper diagnosis and treatment.
+          <strong>Medical Disclaimer:</strong> This tool is for educational
+          purposes only and should not replace professional medical advice.
+          Always consult with a qualified dermatologist for proper diagnosis and
+          treatment.
         </div>
       </div>
     </div>
 
     <script>
       // Simple file input enhancement
-      document.getElementById('fileInput').addEventListener('change', function() {
-        const uploadText = document.querySelector('.upload-text');
-        const uploadHint = document.querySelector('.upload-hint');
-        
-        if (this.files && this.files[0]) {
-          uploadText.textContent = this.files[0].name;
-          uploadHint.textContent = 'File selected successfully!';
-          this.parentElement.classList.add('file-selected');
-        }
-      });
+      document
+        .getElementById("fileInput")
+        .addEventListener("change", function () {
+          const uploadText = document.querySelector(".upload-text");
+          const uploadHint = document.querySelector(".upload-hint");
+
+          if (this.files && this.files[0]) {
+            uploadText.textContent = this.files[0].name;
+            uploadHint.textContent = "File selected successfully!";
+            this.parentElement.classList.add("file-selected");
+          }
+        });
     </script>
   </body>
 </html>

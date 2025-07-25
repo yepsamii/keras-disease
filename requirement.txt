@@ -2,4 +2,4 @@ flask
 keras
 numpy
 opencv-python-headless
-tensorflow-macos
+tensorflow
