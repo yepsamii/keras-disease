@@ -479,6 +479,26 @@
         outline: 2px solid #667eea;
         outline-offset: 2px;
       }
+
+      /* Loader styles */
+      .loader {
+        display: none;
+        margin: 20px auto 0 auto;
+        border: 6px solid #f3f3f3;
+        border-top: 6px solid #667eea;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
     </style>
   </head>
   <body>
@@ -492,6 +512,7 @@
         method="POST"
         enctype="multipart/form-data"
         class="upload-form"
+        id="analyzeForm"
       >
         <div class="upload-section">
           <div class="file-input-wrapper">
@@ -518,10 +539,15 @@
           <button
             type="submit"
             class="submit-button"
+            id="submitButton"
           >
             <span class="button-text">Analyze Image</span>
             <span class="button-icon">🔍</span>
           </button>
+          <div
+            class="loader"
+            id="loader"
+          ></div>
         </div>
       </form>
 
@@ -592,6 +618,14 @@
             uploadHint.textContent = "File selected successfully!";
             this.parentElement.classList.add("file-selected");
           }
+        });
+
+      // Loader logic on form submit
+      document
+        .getElementById("analyzeForm")
+        .addEventListener("submit", function (e) {
+          document.getElementById("submitButton").style.display = "none";
+          document.getElementById("loader").style.display = "block";
         });
     </script>
   </body>
