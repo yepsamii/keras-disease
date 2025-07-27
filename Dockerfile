@@ -1,13 +1,13 @@
 # Use an official Python runtime as a parent image
-FROM python:3.11-slim
+FROM python:3.11
 
 # Set work directory
 WORKDIR /app
 
 # Install Python dependencies
-COPY requirement.txt ./
+COPY requirements.txt ./
 RUN pip install --upgrade pip && \
-    pip install --no-cache-dir -r requirement.txt
+    pip install --no-cache-dir -r requirements.txt
 
 # Copy project files
 COPY . .
