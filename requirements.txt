@@ -1,0 +1,8 @@
+Flask
+numpy
+tensorflow
+opencv-python-headless
+matplotlib
+scikit-learn
+requests
+Pillow
